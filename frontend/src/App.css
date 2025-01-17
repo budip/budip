@@ -1,0 +1,83 @@
+/* General Styles */
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+}
+
+.App-header {
+  padding: 20px;
+  background-color: #0F4C63;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.App-engine {
+  font-size: 14px;
+  font-weight: normal;
+  color: #e6a153;
+}
+
+.App-chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 10px;
+  overflow-y: scroll;
+  background-color: #f7f7f7;
+}
+
+.App-message {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.App-message-user {
+  text-align: right;
+}
+
+.App-message-ai {
+  text-align: left;
+}
+
+.App-loading {
+  font-style: italic;
+  color: #777;
+  margin: 10px 0;
+}
+
+.App-input-area {
+  display: flex;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+  background-color: #e5e5e5;
+}
+
+.App-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.App-button {
+  padding: 10px 15px;
+  margin-left: 10px;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.App-button-disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

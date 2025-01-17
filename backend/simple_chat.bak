@@ -1,0 +1,112 @@
+import os
+import yaml
+
+from dotenv import load_dotenv
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+from openai import OpenAI
+
+# Load environment variables
+load_dotenv()
+
+def get_env_variable(key):
+    """
+    Retrieve an environment variable or raise an exception if it's missing.
+    """
+    value = os.getenv(key)
+    if value is None:
+        raise ValueError(f"Missing required environment variable: {key}")
+    return value
+
+# Private constants
+OPENAI_API_KEY_PATH = get_env_variable("OPENAI_CONFIG_PATH")
+OPENAI_MODEL = get_env_variable("OPENAI_MODEL")
+OPENAI_ROLE_SYSTEM_KEY = get_env_variable("OPENAI_ROLE_SYSTEM_KEY")
+OPENAI_ROLE_SYSTEM_CONTENT = get_env_variable("OPENAI_ROLE_SYSTEM")
+OPENAI_ROLE_USER_KEY = get_env_variable("OPENAI_ROLE_USER_KEY")
+
+# Function to load the API key
+def load_api_key():
+    if not os.path.isfile(OPENAI_API_KEY_PATH):
+        raise FileNotFoundError(f"Config file not found: {OPENAI_API_KEY_PATH}")
+
+    with open(OPENAI_API_KEY_PATH, "r") as file:
+        return yaml.safe_load(file)["credentials"]["openai_api_key"]
+
+# Initialize Flask app and configure CORS
+app = Flask(__name__)
+CORS(app)
+
+# Load the API key and initialize the OpenAI client
+api_key = load_api_key()
+client = OpenAI(api_key=api_key)
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    """
+    Handle POST requests to the /chat endpoint.
+
+    This function receives a user message from the request body, sends it to the OpenAI API for processing, 
+    and returns the AI-generated response. It also logs key events and errors for debugging purposes.
+
+    Returns:
+        - JSON response with the assistant's reply if successful.
+        - JSON response with an error message and appropriate HTTP status code in case of failure.
+
+    Raises:
+        - FileNotFoundError: If a required resource is not found (handled internally).
+        - Exception: Any unexpected errors during processing (logged and returned with a 500 status).
+
+    Workflow:
+        1. Extract the "message" field from the JSON payload of the request.
+        2. Validate the presence of the "message" field.
+        3. Call the OpenAI API to generate a reply based on the user input.
+        4. Return the assistant's reply or an error response.
+
+    Example:
+        Input (JSON):
+        {
+            "message": "Hello, how are you?"
+        }
+
+        Output (JSON):
+        {
+            "reply": "I'm an AI, so I don't have feelings, but I'm here to help you!"
+        }
+
+    HTTP Status Codes:
+        - 200: Successfully processed the request and returned a reply.
+        - 400: Bad request due to missing "message" field in the payload.
+        - 500: Internal server error due to unexpected issues.
+
+    """    
+    app.logger.info("Received a request at /chat")
+    try:
+        data = request.json
+        app.logger.info(f"Request data: {data}")
+
+        user_message = data.get("message")
+        if not user_message:
+            app.logger.error("No message found in the request data")
+            return jsonify({"error": "Message is required"}), 400
+
+        # Make a request to the OpenAI API
+        completion = client.chat.completions.create(
+            model=OPENAI_MODEL,
+            messages=[
+                {"role": OPENAI_ROLE_SYSTEM_KEY, "content": OPENAI_ROLE_SYSTEM_CONTENT},
+                {"role": OPENAI_ROLE_USER_KEY, "content": user_message},
+            ],
+        )
+
+        # Access the assistant's reply correctly
+        assistant_reply = completion.choices[0].message.content
+        app.logger.info(f"OpenAI response: {assistant_reply}")
+        return jsonify({"reply": assistant_reply})
+
+    except Exception as e:
+        app.logger.error(f"Error during request handling: {e}")
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)

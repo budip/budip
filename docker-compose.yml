@@ -1,0 +1,30 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    container_name: backend
+    image: backend_image
+    volumes:
+      - ./backend:/app                  # Mount backend code
+      - ./backend/secrets:/app/secrets  # Mount secrets
+    env_file:
+      - .env                            # Load environment variables from the root .env file
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    image: frontend_image
+    volumes:
+      - ./frontend:/usr/src/app         # Mount frontend code
+      - /usr/src/app/node_modules       # Avoid overwriting node_modules
+    env_file:
+      - .env                            # Load environment variables from the root .env file
+    ports:
+      - "3000:3000"
