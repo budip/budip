@@ -1,6 +1,0 @@
-Flask
-Flask-Cors
-openai
-pyyaml
-python-dotenv
-sentry-sdk>=1.30.0
