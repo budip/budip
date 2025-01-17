@@ -33,33 +33,28 @@ jobs:
           ssh ${{ env.EC2_USER }}@${{ env.EC2_HOST }} << 'EOF'
             set -e
 
-            # Define the project directory on the EC2 instance
+            # Define the project directory
             APP_DIR="/home/${{ env.EC2_USER }}/chat-app"
 
-            # Clone the repository if it doesn't exist
+            # Clone or pull the repository
             if [ ! -d "$APP_DIR" ]; then
               echo "Cloning repository for the first time..."
               git clone https://github.com/budip/budip.git "$APP_DIR"
             fi
-
-            # Navigate to the project directory
             cd "$APP_DIR"
-
-            # Pull the latest changes
-            echo "Pulling latest changes from main branch..."
             git fetch origin
             git reset --hard origin/main
 
             # Install dependencies
             echo "Installing dependencies..."
-            npm install --production
+            npm install --omit=dev
 
-            # Set the OpenAI API key in a .env file
+            # Set up environment variables
             echo "OPENAI_API_KEY=${{ env.OPENAI_API_KEY }}" > .env
 
             # Restart or start the application using PM2
             echo "Restarting application with PM2..."
-            pm2 restart server.js || pm2 start server.js --name chat-app
+            pm2 restart chat-app --update-env || pm2 start server.js --name chat-app
           EOF
 
       # Step 4: Post-deployment cleanup (optional)
