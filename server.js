@@ -41,7 +41,7 @@ app.post('/chat', async (req, res) => {
   try {
     // Call OpenAI API
     const response = await openai.createChatCompletion({
-      model: 'gpt-4',
+      model: 'chatgpt-4o-latest',
       messages: [{ role: 'user', content: message }],
     });
 
