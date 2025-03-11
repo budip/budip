@@ -1,149 +1,169 @@
+/* General Styles */
 body {
-  background-color: #f7f7f7; /* Light gray background */
-  font-family: Arial, sans-serif;
-  height: 100vh;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #f8f9fa;
+  margin: 0px;
 }
 
-.chat-container {
-  width: 100%;
-  max-width: 800px;
-  height: 90vh;
-  background-color: #ffffff;
+/* Hero Section - Honeycomb Background */
+.hero {
+  position: relative;
+  color: white;
+  margin-top: 50px;
+  height: 300px; /* Adjust to 200px or 300px as needed */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url('./images/honeycomb-bg.png'); /* Relative path */
+  
+  background-size: cover; /* Cover the entire section */
+  background-position: center; /* Center the image */
+  background-attachment: fixed; /* Creates a parallax effect */
+}
+
+/* Adjusting Gradient Animation */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Effect for Text Box */
+.hero-content {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 20px 50px; /* Smaller padding */
   border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Stylish Buttons */
+.hero a {
+  margin: 5px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Blog Categories Section */
+.blog-categories {
+  padding: 60px 20px;
+  background: #ffffff;
+}
+
+/* AI Chat Feature Section */
+.ai-chat-feature {
+  padding: 60px 20px;
+  background: #f8f9fa;
+}
+
+
+
+/* Welcome Message - Reduce Spacing */
+.welcome-message {
+  margin-top: 10px; /* Move title closer to navbar */
+  margin-bottom: 5px; /* Move chat box closer */
+  padding-bottom: 0; /* Remove unnecessary padding */
+}
+
+/* Chat Section - Move Higher */
+.chat-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 10px auto; /* Reduce spacing */
+  background: #f4f6f8;
+  border-radius: 12px;
+  padding: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  align-items: center;
 }
 
+/* Chat Header */
 .chat-header {
-  background-color: #243642; /* Custom dark gray */
-  color: white;
-  padding: 15px;
-  text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
+/* Chat Messages */
 .messages {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  background-color: #f8f9fa;
-}
-
-/* User message (Right-aligned bubble) */
-.message.user {
-  align-self: flex-end;
-  background-color: #E2F1E7; /* Light green */
-  color: #154360; /* Deep blue */
+  width: 100%;
+  height: 500px; /* Increased height */
+  overflow-y: auto; /* Enable scrolling */
   padding: 15px;
-  border-radius: 15px 15px 0px 15px;
-  margin-bottom: 10px;
-  max-width: 60%;
-  word-wrap: break-word;
-  text-align: right;
-  margin-left: auto;
+  background: #fff;
+  border-radius: 8px;
 }
 
-/* AI response (Full-width block) */
-.message.ai {
-  align-self: stretch; /* Full width */
-  background-color: #EFF3EA; /* Light gray-green */
-  color: #495057; /* Bootstrap dark gray */
-  padding: 15px;
-  border-radius: 15px; /* Rounded corners */
-  margin-bottom: 10px;
-  word-wrap: break-word;
-  text-align: left;
-}
-
-/* Markdown content styling inside AI messages */
-.message.ai .markdown-content {
-  font-family: Arial, sans-serif; /* Consistent font */
-  white-space: pre-wrap; /* Preserve formatting like tabs and newlines */
-  line-height: 1.5; /* Improve readability */
-  word-wrap: break-word;
-}
-
-.message.ai .markdown-content h1,
-.message.ai .markdown-content h2,
-.message.ai .markdown-content h3 {
-  margin: 10px 0;
-  font-weight: bold;
-}
-
-.message.ai .markdown-content ul {
-  margin-left: 20px;
-  list-style-type: disc; /* Bullets for unordered lists */
-}
-
-.message.ai .markdown-content ol {
-  margin-left: 20px;
-  list-style-type: decimal; /* Numbers for ordered lists */
-}
-
-.message.ai .markdown-content pre {
-  background-color: #f8f9fa; /* Light gray for code blocks */
-  padding: 10px;
-  border-radius: 5px;
-  overflow-x: auto;
-}
-
-.message.ai .markdown-content code {
-  font-family: Consolas, Courier, monospace; /* Monospace font for inline code */
-  background-color: #f1f1f1; /* Light gray background */
-  padding: 2px 5px;
-  border-radius: 3px;
-  color: #d63384; /* Highlighted text */
-}
-
-/* Typing indicator */
-.typing-indicator {
-  color: #6c757d;
-  font-size: 0.9rem;
-  font-style: italic;
-  margin-bottom: 10px;
-  align-self: flex-start;
-}
-
+/* Chat Form */
 .chat-form {
   display: flex;
-  padding: 15px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #dee2e6;
+  width: 100%;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.chat-form input[type="text"] {
-  flex: 1;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ced4da;
-  border-radius: 25px;
-  outline: none;
+.chat-form input {
+  flex-grow: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
+/* Send Button */
 .chat-form button {
-  margin-left: 15px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #629584; /* Custom button color */
+  background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 25px;
+  padding: 12px 18px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 1rem;
 }
 
 .chat-form button:hover {
-  background-color: #084298; /* Deep blue for hover */
+  background-color: #45a049;
 }
 
-/* Smooth scrolling */
-.messages {
-  scroll-behavior: smooth;
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .chat-container {
+    width: 95%; /* Adjust for mobile */
+  }
+
+  .messages {
+    height: 400px; /* Reduce height for smaller screens */
+  }
 }

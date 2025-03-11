@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Chat with BP - Chat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <div id="navbar-container"></div>
+  <script src="navbar.js"></script>
+
+  <!-- Welcome Message -->
+  <div class="container text-center welcome-message" style="margin-top: 70px;">
+    <h1>Welcome to AI Chat with BP</h1>
+    <p>This is an AI-powered chatbot that helps you with your queries.</p>
+  </div>
+
+  <!-- Chat Content -->
+  <div class="container d-flex justify-content-center align-items-center mt-3">
+    <div class="chat-container">
+      <!-- <div class="chat-header">AI Chat with BP</div> -->
+      <div id="chatbox" class="messages"></div>
+      <form id="chat-form" class="chat-form">
+        <input type="text" id="user-input" placeholder="Type your message..." required>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="chat.js"></script>
+
+</body>
+</html>
