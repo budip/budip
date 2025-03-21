@@ -8,6 +8,7 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+      - ./staticfiles:/app/staticfiles
     env_file:
       - .env
     stdin_open: true
@@ -41,4 +42,3 @@ services:
 volumes:
   postgres_data:
 
-  
