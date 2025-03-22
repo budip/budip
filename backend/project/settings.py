@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # Custom Apps
-    'apps.nasa',
+    'apps.space',
     'apps.blog',    
 ]
 
