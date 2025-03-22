@@ -29,7 +29,7 @@ const apod = ref(null);
 
 onMounted(async () => {
   try {
-      const response = await fetch('http://127.0.0.1:8000/nasa/apod/');
+      const response = await fetch('http://localhost:8000/space/apod/');
       const data = await response.json();
       apod.value = data;
   } catch (error) {

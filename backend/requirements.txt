@@ -6,3 +6,4 @@ django-cors-headers
 whitenoise
 dj-database-url>=1.0.0
 python-dotenv
+requests
