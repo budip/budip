@@ -19,6 +19,7 @@
                 <div class="button-container">
                     <button type="submit" class="action-btn save-btn">💾 Save Changes</button>
                     <button type="button" class="action-btn cancel-btn" @click="cancelEdit">❌ Cancel</button>
+                    <button type="button" class="action-btn delete-btn" @click="deletePost">🗑️ Delete</button>
                 </div>
             </form>
       
@@ -64,10 +65,6 @@ const updatePost = async () => {
       })
     });
 
-    // const data = await response.json();
-    // console.log('Response:', response.status, data);
-    // console.log("Backend error response:", data);
-
     if (!response.ok) {
       throw new Error("Failed to update post");
     }
@@ -76,6 +73,24 @@ const updatePost = async () => {
     setTimeout(() => router.push(`/blog/${postId}`), 2000);
   } catch (error) {
     console.error("Error updating blog post:", error);
+  }
+};
+
+const deletePost = async () => {
+  if (!confirm("Are you sure you want to delete this post?")) return;
+
+  try {
+    const response = await fetch(`/api/posts/${postId}/`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      router.push('/blog');
+    } else {
+      throw new Error("Failed to delete post");
+    }
+  } catch (error) {
+    console.error("Error deleting blog post:", error);
   }
 };
 
@@ -192,5 +207,16 @@ textarea {
 
 .cancel-btn:hover {
     background: #ea8591; /* Soft red on hover */
+}
+
+.delete-btn {
+  background: #f8d7da;
+  color: #721c24;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #f5c6cb;
 }
 </style>
