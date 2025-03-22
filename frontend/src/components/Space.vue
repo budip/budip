@@ -29,7 +29,7 @@ const apod = ref(null);
 
 onMounted(async () => {
   try {
-      const response = await fetch('http://localhost:8000/space/apod/');
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/space/apod/`);
       const data = await response.json();
       apod.value = data;
   } catch (error) {
