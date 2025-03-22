@@ -25,7 +25,7 @@
 
     onMounted(async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/blog/posts/');
+            const response = await fetch('/api/posts/');
             blogPosts.value = await response.json();
             loading.value = false;
         } catch (error) {

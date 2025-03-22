@@ -14,6 +14,7 @@ const routes = [
   { path: '/', component: Home },
   { path: '/blog', component: Blog },
   { path: '/blog/:id', component: BlogDetail, props: true },
+  { path: '/blog/:id/edit', component: EditBlog, props: true },
   { path: '/create', component: CreateBlog },
   { path: '/edit/:id', component: EditBlog, props: true },
   { path: '/about', component: About },

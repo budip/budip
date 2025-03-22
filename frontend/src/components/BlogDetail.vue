@@ -32,7 +32,7 @@ const loading = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/blog/posts/${route.params.id}/`);
+        const response = await fetch(`/api/posts/${route.params.id}/`);
         if (!response.ok) throw new Error("Post not found");
         blogPost.value = await response.json();
     } catch (error) {

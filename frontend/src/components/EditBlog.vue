@@ -43,7 +43,7 @@ const successMessage = ref(null);
 
 onMounted(async () => {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/blog/posts/${postId}/`);
+        const response = await fetch(`/api/posts/${postId}/`);
         if (!response.ok) throw new Error("Post not found");
         const post = await response.json();
         title.value = post.title;
@@ -54,22 +54,29 @@ onMounted(async () => {
 });
 
 const updatePost = async () => {
-    try {
-        const response = await fetch(`http://127.0.0.1:8000/blog/posts/${postId}/`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: title.value, content: content.value })
-        });
+  try {
+    const response = await fetch(`/api/posts/${postId}/`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: title.value,
+        content: content.value
+      })
+    });
 
-        if (response.ok) {
-            successMessage.value = "Blog post updated!";
-            setTimeout(() => router.push(`/blog/${postId}`), 2000);
-        } else {
-            throw new Error("Failed to update post");
-        }
-    } catch (error) {
-        console.error("Error updating blog post:", error);
+    // const data = await response.json();
+    // console.log('Response:', response.status, data);
+    // console.log("Backend error response:", data);
+
+    if (!response.ok) {
+      throw new Error("Failed to update post");
     }
+
+    successMessage.value = "Blog post updated!";
+    setTimeout(() => router.push(`/blog/${postId}`), 2000);
+  } catch (error) {
+    console.error("Error updating blog post:", error);
+  }
 };
 
 const cancelEdit = () => {
