@@ -1,88 +1,108 @@
-# BP Chat
+# BP's Digital Lab
 
-BP Chat is a simple real-time chat application built using Node.js, Express, and WebSockets (Socket.io). It allows users to communicate in a live chatroom.
+**Welcome!**
 
-## Features
+This is my personal full-stack website — a creative playground where I explore content creation, real-time interaction, AI integration, and space data. It brings together multiple custom-built apps into one seamless platform.
 
-- Real-time messaging with WebSockets (Socket.io)
-- Simple and clean UI
-- Dockerized setup for easy deployment
-- Lightweight and efficient
+The project includes a blog, a NASA-themed space section, an OpenAI-powered chat assistant, and a clean frontend powered by Vue 3 and Vite. It's fully containerized with Docker, continuously deployed via GitHub Actions, and hosted on AWS EC2.
 
-## Installation
+> <br>Not a generic starter template. This site reflects what I love to build: things that are useful, curious, and human-centered.<br><br>
 
-### Prerequisites
+<br>
 
-Ensure you have the following installed on your system:
+## 🧩 What's Inside
 
-- [Node.js](https://nodejs.org/) (LTS recommended)
-- [Docker](https://www.docker.com/) (if using Docker for deployment)
+This site is made up of four core apps:
 
-### Clone the repository
+### 🌐 Home
 
-```sh
-git clone https://github.com/yourusername/bp-chat.git
-cd bp-chat
-```
+The landing page that introduces the site and links to featured content.
 
-### Install dependencies
+### 📝 Blog
 
-```sh
-npm install
-```
+A fully functional blog system where I write and share my thoughts, ideas, and updates. It supports:
 
-## Running the Application
+- Markdown-style posts
+- Post creation/editing via the frontend
+- Django backend with API integration
 
-### Without Docker
+### 🚀 Space (NASA)
 
-```sh
-node server.js
-```
+A space-themed section featuring:
 
-The application will be accessible at `http://localhost:3000`
+- Data exploration and visuals related to NASA APIs
+- Astronomy and space science content
+- ISS and planetary info integration
 
-### With Docker
+### 🤖 AI (Chat)
 
-```sh
-docker-compose up --build
-```
+An interactive AI chat assistant powered by OpenAI, built using:
 
-The application will be accessible at `http://localhost:3000`
+- Django Rest Framework for backend API
+- Vue 3 with Vite for frontend experience
+- Chat-style interface that allows prompt/response exchange
+- Seamless backend integration via fetch and CORS
 
-## Project Structure
+<br>
 
-```
-BP Chat
-├── Dockerfile
+## ⚙️ Technologies Used
+
+- **Frontend**: Vue 3, Vite, TailwindCSS
+- **Backend**: Django, Django REST Framework
+- **AI Integration**: OpenAI API
+- **Containerized**: Docker + Docker Compose
+- **Database**: PostgreSQL
+- **CI/CD**: GitHub Actions for full build/test/deploy pipeline
+- **Deployment**: Hosted on AWS EC2
+
+<br>
+
+## 🚀 CI/CD & Deployment
+
+This project uses **GitHub Actions** for continuous integration and deployment. Key steps in the pipeline include:
+
+- 🔍 Linting and code checks on every commit
+- ✅ Automated tests for backend and frontend
+- 🐳 Docker image builds for all services
+- 🚀 Deployment to AWS EC2 using SSH and Docker Compose
+
+Every push to `main` triggers a clean end-to-end deployment, ensuring the site is always up to date with the latest code.
+
+<br>
+
+## 💻 Folder Structure Overview
+
+<small>
+
+```text
+project/
+├── backend/               # Django app with blog, space, ai
+│   ├── apps/
+│   ├── manage.py
+│   ├── project/
+│   └── staticfiles/
+├── frontend/              # Vue 3 + Vite frontend
+│   ├── src/components/
+│   ├── main.js
+│   ├── vite.config.js
+│   └── ...
+├── .github/workflows/     # GitHub Actions CI/CD config
 ├── docker-compose.yml
-├── node_modules
-├── package.json
-├── public
-│   ├── index.html
-│   ├── script.js
-│   └── styles.css
-└── server.js
+├── public/                # Static fallback content
+└── README.md
 ```
 
-## Usage
+</small>
 
-1. Open `http://localhost:3000` in a browser.
-2. Enter a username (if applicable) and join the chat.
-3. Start sending messages in real time.
+<br>
 
-## Deployment
+## 👤 Author
 
-To deploy using Docker, you can push the image to a container registry and run it on any cloud provider:
+**Budi Prasetya Chen**  
+Engineer • Explorer • Creator
 
-```sh
-docker build -t bp-chat .
-docker run -p 3000:3000 bp-chat
-```
-
-## License
-
-This project is licensed under the MIT License.
-
----
-
-**Author:** Budi Prasetya - bpchen@gmail.com
+📫 Email: bpchen@gmail.com  
+🌐 LinkedIn: https://www.linkedin.com/in/budi-prasetya/  
+📺 YouTube: https://www.youtube.com/@budiprasetya  
+🌌 NASA Social Participant  
+💬 OpenAI API Explorer
