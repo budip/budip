@@ -1,5 +1,7 @@
 # Environment files
 .env
+/backend/.env
+/frontend/.env
 
 # Node modules
 node_modules/

@@ -42,7 +42,7 @@ const sendPrompt = async () => {
       const data = await res.json()
       messages.value.push({ role: 'ai', content: data.response || 'No response' })
   } catch (err) {
-      messages.value.push({ role: 'ai', content: '⚠️ Something went wrong.' })
+      messages.value.push({ role: 'ai', content: 'Something went wrong.' })
       console.error(err)
   } finally {
       prompt.value = ''
