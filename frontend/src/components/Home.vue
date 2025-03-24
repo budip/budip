@@ -2,12 +2,14 @@
     <div>
         <HeroSection />
         <ExploreTopics />
-        <AIChat />
+        <IntroShowcase />
+        <SiteFooter />
     </div>
 </template>
   
 <script setup>
     import HeroSection from './HeroSection.vue';
     import ExploreTopics from './ExploreTopics.vue';
-    // import AIChat from './AIChat.vue';
+    import IntroShowcase from './IntroShowcase.vue';
+    import SiteFooter from './SiteFooter.vue'
 </script>

@@ -40,7 +40,7 @@
 
 <style scoped>
   .explore-topics {
-      padding: 50px 0;
+      padding: 32px 0 20px;
       background: #f8f9fa;
   }
 
@@ -62,7 +62,7 @@
       flex-direction: column;
       justify-content: flex-start; 
       align-items: center;
-      padding: 20px;
+      padding: px;
       border-radius: 10px;
       background: white;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);

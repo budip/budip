@@ -24,6 +24,7 @@
     color: white;
     overflow: hidden;
     padding-top: 50px; /* 50px gap between navbar and welcome panel */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   }
   
   /* Background Image - Fixed Zoom & Position */
@@ -45,9 +46,11 @@
   .overlay {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    width:1920px;
     height: 100%;
+    transform: translateX(-50%);
+    background-color: #f1f5f9;
     background: rgba(0, 0, 0, 0.2); /* Semi-transparent overlay */
     z-index: -1;
   }
