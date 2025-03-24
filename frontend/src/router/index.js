@@ -19,7 +19,7 @@ const routes = [
   { path: '/edit/:id', component: EditBlog, props: true },
   { path: '/about', component: About },
   { path: '/space', component: Space },
-  { path: '/ai', component: AIChat },
+  { path: '/ai', name: 'AI Chat', component: AIChat },
   { path: '/explore', component: ExploreTopics },
 ]
 

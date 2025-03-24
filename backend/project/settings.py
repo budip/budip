@@ -49,7 +49,8 @@ INSTALLED_APPS = [
 
     # Custom Apps
     'apps.space',
-    'apps.blog',    
+    'apps.blog',
+    'apps.ai',
 ]
 
 CORS_ALLOWED_ORIGINS = [
