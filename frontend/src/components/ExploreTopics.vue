@@ -40,7 +40,7 @@
 
 <style scoped>
   .explore-topics {
-      padding: 32px 0 20px;
+      padding: 20px 0 28px;
       background: #f8f9fa;
   }
 

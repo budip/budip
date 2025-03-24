@@ -13,7 +13,7 @@
   .footer {
     border-top: 1px solid #cbd5e0;
     background-color: #d5dfe8; /* Softer blue-gray contrast */
-    padding: 40px 20px 30px;
+    padding: 30px 20px 30px;
     text-align: center;
     font-size: 14px;
     color: #4a5568;
