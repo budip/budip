@@ -14,8 +14,8 @@
         </p>
     
         <blockquote class="highlight-quote">
-        💡 <em>Not a generic starter template.</em><br>
-        This site reflects what I love to build: things that are <strong>useful</strong>, <strong>curious</strong>, and <strong>human-centered</strong>.
+        💡 &nbsp;<em>Not a generic starter template.</em><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This site reflects what I love to build: things that are <strong>useful</strong>, <strong>curious</strong>, and <strong>human-centered</strong>.
         </blockquote>
 
         <p class="badge-row">
@@ -24,9 +24,14 @@
             <img src="https://img.shields.io/badge/Vite-4.x-646CFF?style=flat&logo=vite" />
             <img src="https://img.shields.io/badge/Python-3.11-blue?style=flat&logo=python" />
             <img src="https://img.shields.io/badge/PostgreSQL-13+-336791?style=flat&logo=postgresql" />
+            <img src="https://img.shields.io/badge/REST-API-FF6F00?style=flat&logo=fastapi&logoColor=white" />
+            <img src="https://img.shields.io/badge/OpenAI-API-412991?style=flat&logo=openai&logoColor=white" />
             <img src="https://img.shields.io/badge/Dockerized-blue?style=flat&logo=docker" />
             <img src="https://img.shields.io/badge/GitHub_Actions-Deployed-blueviolet?style=flat&logo=githubactions" />
             <img src="https://img.shields.io/badge/AWS-EC2-FF9900?style=flat&logo=amazonaws" />
+            <img src="https://img.shields.io/badge/AWS-S3-orange?style=flat&logo=amazonaws" />
+            <img src="https://img.shields.io/badge/Kafka-EventStreaming-231F20?style=flat&logo=apachekafka&logoColor=white" />
+            <img src="https://img.shields.io/badge/Redis-InMemoryDB-dc382d?style=flat&logo=redis&logoColor=white" />
         </p>
     </div>
   </template>
