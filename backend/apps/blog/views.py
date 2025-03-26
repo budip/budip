@@ -8,7 +8,7 @@ from rest_framework.authentication import BasicAuthentication
 
 @method_decorator(csrf_exempt, name='dispatch')
 class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-created_at')
     serializer_class = PostSerializer
     permission_classes = [permissions.AllowAny]
     authentication_classes = [CsrfExemptSessionAuthentication, BasicAuthentication]
