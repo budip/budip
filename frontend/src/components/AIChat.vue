@@ -54,7 +54,7 @@ const sendPrompt = async () => {
 <style scoped>
 .container {
   max-width: 900px;
-  margin: 80px auto 40px;
+  margin: 20px auto 40px;
   text-align: left;
   background: white;
   padding: 30px;

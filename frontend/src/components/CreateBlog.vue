@@ -67,7 +67,7 @@ const cancelPost = () => {
 <style scoped>
 /* 🔹 Consistent Layout with Blog, Edit, & About Pages */
 .create-blog-container {
-    padding: 60px 0;
+    padding: 0 0;
     /* background: #f8f9fa; */
 }
 

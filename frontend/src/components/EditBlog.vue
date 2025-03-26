@@ -102,7 +102,7 @@ const cancelEdit = () => {
 <style scoped>
 /* 🔹 Consistent Layout with Blog & About Pages */
 .edit-blog-container {
-    padding: 60px 0;
+    padding: 0 0;
     /* background: #f8f9fa; */
 }
 

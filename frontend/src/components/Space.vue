@@ -51,7 +51,7 @@ const formatDate = (dateString) => {
 <style scoped>
 /* 🔹 Consistent Layout with Blog & About Pages */
 .nasa-container {
-  padding: 60px 0;
+  padding: 0 0;
   /* background: #f8f9fa; */
 }
 

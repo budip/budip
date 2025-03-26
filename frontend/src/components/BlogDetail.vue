@@ -64,7 +64,7 @@ const renderMarkdown = (content) => {
 <style scoped>
 /* 🔹 Consistent Layout with About & Blog Pages */
 .blog-detail-container {
-    padding: 60px 0;
+    padding: 0 0;
     /* background: #f8f9fa; */
 }
 

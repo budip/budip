@@ -1,39 +1,41 @@
 <template>
-    <div class="intro-wrapper">
-        <h2 class="intro-heading">👋 Welcome!</h2>
-        <hr class="intro-line"/>
-        <p>
-            This is my <strong>personal full-stack website</strong> — a creative playground where I explore content creation, real-time interaction, AI integration, and space data.
-            It brings together multiple custom-built apps into one seamless platform.
-        </p>
-    
-        <p>
-            The project includes a <strong>blog</strong>, a <strong>NASA-themed space section</strong>, an <strong>OpenAI-powered chat assistant</strong>,
-            and a clean frontend powered by <strong>Vue 3 + Vite</strong>. It's fully containerized with <strong>Docker</strong>, continuously deployed via <strong>GitHub Actions</strong>,
-            and hosted on <strong>AWS EC2</strong>.
-        </p>
-    
-        <blockquote class="highlight-quote">
-        💡 &nbsp;<em>Not a generic starter template.</em><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This site reflects what I love to build: things that are <strong>useful</strong>, <strong>curious</strong>, and <strong>human-centered</strong>.
-        </blockquote>
+    <section class="intro-section">
+        <div class="intro-wrapper">
+            <h2 class="intro-heading">👋 Welcome!</h2>
+            <hr class="intro-line"/>
+            <p>
+                This is my <strong>personal full-stack website</strong> — a creative playground where I explore content creation, real-time interaction, AI integration, and space data.
+                It brings together multiple custom-built apps into one seamless platform.
+            </p>
+        
+            <p>
+                The project includes a <strong>blog</strong>, a <strong>NASA-themed space section</strong>, an <strong>OpenAI-powered chat assistant</strong>,
+                and a clean frontend powered by <strong>Vue 3 + Vite</strong>. It's fully containerized with <strong>Docker</strong>, continuously deployed via <strong>GitHub Actions</strong>,
+                and hosted on <strong>AWS EC2</strong>.
+            </p>
+        
+            <blockquote class="highlight-quote">
+            💡 &nbsp;<em>Not a generic starter template.</em><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This site reflects what I love to build: things that are <strong>useful</strong>, <strong>curious</strong>, and <strong>human-centered</strong>.
+            </blockquote>
 
-        <p class="badge-row">
-            <img src="https://img.shields.io/badge/Django-3.2-green?style=flat&logo=django" />
-            <img src="https://img.shields.io/badge/Vue-3.x-41B883?style=flat&logo=vue.js" />
-            <img src="https://img.shields.io/badge/Vite-4.x-646CFF?style=flat&logo=vite" />
-            <img src="https://img.shields.io/badge/Python-3.11-blue?style=flat&logo=python" />
-            <img src="https://img.shields.io/badge/PostgreSQL-13+-336791?style=flat&logo=postgresql" />
-            <img src="https://img.shields.io/badge/REST-API-FF6F00?style=flat&logo=fastapi&logoColor=white" />
-            <img src="https://img.shields.io/badge/OpenAI-API-412991?style=flat&logo=openai&logoColor=white" />
-            <img src="https://img.shields.io/badge/Dockerized-blue?style=flat&logo=docker" />
-            <img src="https://img.shields.io/badge/GitHub_Actions-Deployed-blueviolet?style=flat&logo=githubactions" />
-            <img src="https://img.shields.io/badge/AWS-EC2-FF9900?style=flat&logo=amazonaws" />
-            <img src="https://img.shields.io/badge/AWS-S3-orange?style=flat&logo=amazonaws" />
-            <img src="https://img.shields.io/badge/Kafka-EventStreaming-231F20?style=flat&logo=apachekafka&logoColor=white" />
-            <img src="https://img.shields.io/badge/Redis-InMemoryDB-dc382d?style=flat&logo=redis&logoColor=white" />
-        </p>
-    </div>
+            <p class="badge-row">
+                <img src="https://img.shields.io/badge/Django-3.2-green?style=flat&logo=django" />
+                <img src="https://img.shields.io/badge/Vue-3.x-41B883?style=flat&logo=vue.js" />
+                <img src="https://img.shields.io/badge/Vite-4.x-646CFF?style=flat&logo=vite" />
+                <img src="https://img.shields.io/badge/Python-3.11-blue?style=flat&logo=python" />
+                <img src="https://img.shields.io/badge/PostgreSQL-13+-336791?style=flat&logo=postgresql" />
+                <img src="https://img.shields.io/badge/REST-API-FF6F00?style=flat&logo=fastapi&logoColor=white" />
+                <img src="https://img.shields.io/badge/OpenAI-API-412991?style=flat&logo=openai&logoColor=white" />
+                <img src="https://img.shields.io/badge/Dockerized-blue?style=flat&logo=docker" />
+                <img src="https://img.shields.io/badge/GitHub_Actions-Deployed-blueviolet?style=flat&logo=githubactions" />
+                <img src="https://img.shields.io/badge/AWS-EC2-FF9900?style=flat&logo=amazonaws" />
+                <img src="https://img.shields.io/badge/AWS-S3-orange?style=flat&logo=amazonaws" />
+                <img src="https://img.shields.io/badge/Kafka-EventStreaming-231F20?style=flat&logo=apachekafka&logoColor=white" />
+                <img src="https://img.shields.io/badge/Redis-InMemoryDB-dc382d?style=flat&logo=redis&logoColor=white" />
+            </p>
+        </div>
+    </section>
   </template>
   
   <script setup>
@@ -41,11 +43,16 @@
   </script>
   
   <style scoped>
+    .intro-section {
+        background-color: #f8f9fa; /* or #f1f5f9, #edf2f7 */
+        padding: 20px 20px;
+    }
+
     .intro-wrapper {
         max-width: 920px;
         margin: 14px auto 30px;
         padding: 32px;
-        background: #ffffff;
+        background: #e2e8f0;
         border-radius: 14px;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
         line-height: 1.65;
@@ -77,6 +84,11 @@
         gap: 8px;
         margin-top: 40px;
         margin-bottom: 0px;
+    }
+
+    .badge-row img {
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
     }
 
     .intro-line {

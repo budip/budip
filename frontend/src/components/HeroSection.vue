@@ -16,14 +16,14 @@
   .hero {
     position: relative;
     width: 100%;
-    height: 350px; /* Fixed height */
+    height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
     overflow: hidden;
-    padding-top: 50px; /* 50px gap between navbar and welcome panel */
+    padding-top: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   }
   
@@ -31,15 +31,15 @@
   .hero::before {
     content: "";
     position: absolute;
-    top: -150px; /* Moves background image up */
+    top: -150px;
     left: 50%;
-    transform: translateX(-50%); /* Centers the background */
-    width: 1920px; /* Keeps a fixed width to prevent resizing */
-    height: 500px; /* Adjust height to match the zoom level */
+    transform: translateX(-50%);
+    width: 1920px;
+    height: 500px;
     background: url('/images/honeycomb-bg.png') no-repeat center top;
-    background-size: cover; /* Prevents stretching */
-    filter: brightness(60%); /* Dim the image */
-    z-index: -1; /* Keep it behind content */
+    background-size: cover;
+    filter: brightness(60%);
+    z-index: -1;
   }
   
   /* Overlay to Dim Background */
@@ -51,28 +51,28 @@
     height: 100%;
     transform: translateX(-50%);
     background-color: #f1f5f9;
-    background: rgba(0, 0, 0, 0.2); /* Semi-transparent overlay */
+    background: rgba(0, 0, 0, 0.2);
     z-index: -1;
   }
   
   /* Welcome Panel */
   .hero-content {
     position: relative;
-    background: rgba(213, 206, 206, 0.3); /* Semi-transparent light background */
-    padding: 25px 40px;
+    background: rgba(213, 206, 206, 0.3);
+    padding: 30px 40px;
     border-radius: 10px;
-    backdrop-filter: blur(5px); /* Soft blur effect on text box only */
+    backdrop-filter: blur(5px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 600px; /* Keep it responsive */
+    max-width: 600px;
   }
   
   /* Buttons Styling */
   .buttons {
     margin-top: 15px;
     display: flex;
-    gap: 20px; /* Increased spacing between buttons */
+    gap: 20px;
     justify-content: center;
   }
   

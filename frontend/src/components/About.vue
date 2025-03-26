@@ -38,7 +38,7 @@
   
 <style scoped>
   .about-container {
-      padding: 80px 20px;
+      padding: 20px 20px;
       /* background: #f9f9f9; */
       text-align: center;
   }
