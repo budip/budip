@@ -60,10 +60,9 @@
     font-weight: bold;
   }
   
-  /* ✨ Tabs (Option B enhanced) */
   .tabs-navbar {
     display: flex;
-    gap: 24px;
+    gap: 35px;
     border-bottom: 2px solid #eee;
     margin-bottom: 24px;
     padding-bottom: 8px;

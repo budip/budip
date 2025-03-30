@@ -1,8 +1,10 @@
 <template>
     <div class="image-analyzer-container">
-      <p class="analyzer-intro">
-        <strong>Upload a photo</strong> and let AI describe what it sees.
-      </p>
+        <p class="analyzer-intro">
+            <strong>Upload a photo</strong> and let AI describe what it sees.<br />
+            Your image stays private, processed in memory only, never stored or shared. 
+            It’s sent anonymously to OpenAI and <strong>not</strong> used to train any models.
+        </p>
 
       <!-- Upload + Button -->
       <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 mb-6">

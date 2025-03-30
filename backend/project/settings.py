@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'apps.space',
     'apps.blog',
     'apps.ai',
+    'apps.console',
 ]
 
 MIDDLEWARE = [
@@ -179,3 +180,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Custom API keys
 NASA_API_KEY = os.getenv("NASA_API_KEY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+
+# Kafka Settings
+KAFKA_BROKER_URL = os.getenv("KAFKA_BROKER_URL", "kafka:9092")

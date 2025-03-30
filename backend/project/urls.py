@@ -22,5 +22,5 @@ urlpatterns = [
     path('api/ai/', include('apps.ai.urls')),
     path('space/', include('apps.space.urls')),
     path('ai/', include('apps.ai.urls')),
-    
+    path("api/kafka/", include("apps.console.urls")),
 ]
