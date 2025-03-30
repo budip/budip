@@ -25,17 +25,22 @@
   
         <!-- Right: Results (only after analyze) -->
         <div
-          v-if="parsedResponse.title || parsedResponse.caption || parsedResponse.categories.length"
-          class="result-box"
-        >
-          <h3 class="text-xl font-semibold mb-2">{{ parsedResponse.title }}</h3>
-          <p class="text-gray-700 mb-2">
-            <strong>Caption:</strong> {{ parsedResponse.caption }}
-          </p>
-  
-          <p v-if="parsedResponse.categories.length" class="text-gray-600 text-sm">
-            <strong>Categories:</strong> {{ parsedResponse.categories.join(', ') }}
-          </p>
+            v-if="parsedResponse.title || parsedResponse.caption || parsedResponse.categories.length"
+            class="result-box"
+            >
+            <h3 class="text-xl font-semibold mb-2">{{ parsedResponse.title }}</h3>
+
+            <p class="text-gray-700 mb-2">
+                <strong>Caption:</strong> {{ parsedResponse.caption }}
+            </p>
+
+            <p v-if="parsedResponse.categories.length" class="text-gray-600 text-sm mb-1">
+                <strong>Categories:</strong> {{ parsedResponse.categories.join(', ') }}
+            </p>
+
+            <p v-if="parsedResponse.alt_text" class="text-gray-600 text-sm">
+                <strong>Alt Text:</strong> {{ parsedResponse.alt_text }}
+            </p>
         </div>
       </div>
     </div>
@@ -75,6 +80,7 @@
         title: parsed.title || '',
         caption: parsed.caption || '',
         categories: parsed.categories || [],
+        alt_text: parsed.alt_text || ''
       }
     } catch (e) {
       return { title: '', caption: '', categories: [] }

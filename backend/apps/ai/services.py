@@ -25,7 +25,12 @@ def get_openai_response_image_analyzer(uploaded_file):
         image_data_url = f"data:{mime_type};base64,{base64_image}"
 
         # 🧠 Prompt to generate caption, title, alt-text
-        vision_prompt = "Respond only with a raw JSON object containing 'title', 'caption', and 'alt_text'. Do not include markdown formatting or triple backticks."
+        vision_prompt = (
+            "Respond only with a raw JSON object containing 'title', 'caption', 'alt_text', "
+            "and 'categories'. The 'categories' field should be an array of 2–4 relevant keywords "
+            "that describe the image (e.g., ['Space', 'Astronomy', 'Galaxy']). "
+            "Do not include markdown formatting or triple backticks. Respond in strict JSON format."
+        )
 
         messages = [
             {
