@@ -7,7 +7,7 @@ import CreateBlog from '../components/CreateBlog.vue'
 import EditBlog from '../components/EditBlog.vue'
 import About from '../components/About.vue'
 import Space from '../components/Space.vue'
-import AIChat from '../components/AIChat.vue'
+import AIPage from '../components/AIPage.vue'   // <-- new import
 import ExploreTopics from '../components/ExploreTopics.vue'
 
 const routes = [
@@ -19,7 +19,7 @@ const routes = [
   { path: '/edit/:id', component: EditBlog, props: true },
   { path: '/about', component: About },
   { path: '/space', component: Space },
-  { path: '/ai', name: 'AI Chat', component: AIChat },
+  { path: '/ai', name: 'AI Tools', component: AIPage },
   { path: '/explore', component: ExploreTopics },
 ]
 

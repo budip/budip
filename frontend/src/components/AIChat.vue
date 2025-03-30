@@ -1,12 +1,7 @@
 <template>
-  <div class="container">
-    <section>
-    <!-- 🤖 AI Chat Section -->
-    <header class="page-header">
-      <h2 class="page-title">🤖 AI Chat</h2>
-    </header>
-
-    <div class="chat-box">
+  <section>
+    <!-- Chat Box -->
+    <div v-if="messages.length" ref="chatBoxRef" class="chat-box">
       <div
         v-for="(msg, index) in messages"
         :key="index"
@@ -17,6 +12,7 @@
       </div>
     </div>
 
+    <!-- Input Area -->
     <div class="input-area">
       <textarea
         v-model="prompt"
@@ -28,27 +24,30 @@
         {{ loading ? 'Thinking...' : 'Send' }}
       </button>
     </div>
-    </section>
-
-    <!-- 🖼️ Image Analyzer Section -->
-    <section class="analyzer-section">
-      <ImageAnalyzer />
-    </section>
-  </div>
+  </section>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import ImageAnalyzer from '../components/ImageAnalyzer.vue'
+import { ref, nextTick } from 'vue'
 
 const prompt = ref('')
 const messages = ref([])
 const loading = ref(false)
+const chatBoxRef = ref(null)
+
+const scrollToBottom = () => {
+  nextTick(() => {
+    if (chatBoxRef.value) {
+      chatBoxRef.value.scrollTop = chatBoxRef.value.scrollHeight
+    }
+  })
+}
 
 const sendPrompt = async () => {
   if (!prompt.value.trim()) return
 
   messages.value.push({ role: 'user', content: prompt.value })
+  scrollToBottom()
   loading.value = true
 
   try {
@@ -60,9 +59,11 @@ const sendPrompt = async () => {
 
     const data = await res.json()
     messages.value.push({ role: 'ai', content: data.response || 'No response' })
+    scrollToBottom()
   } catch (err) {
     messages.value.push({ role: 'ai', content: 'Something went wrong.' })
     console.error(err)
+    scrollToBottom()
   } finally {
     prompt.value = ''
     loading.value = false
@@ -71,32 +72,18 @@ const sendPrompt = async () => {
 </script>
 
 <style scoped>
-.container {
-  max-width: 900px;
-  margin: 20px auto 40px;
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
-}
-
-.page-header,
-.section-title {
-  border-bottom: 2px solid #eee;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  font-size: 24px;
-  font-weight: 600;
-  color: #333;
-}
-
 .chat-box {
-  max-height: 400px;
+  height: auto;
+  max-height: 35vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-bottom: 20px;
+  padding: 12px;
+  background-color: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 6px;
 }
 
 .chat-message {
@@ -160,11 +147,5 @@ const sendPrompt = async () => {
 .send-btn:disabled {
   background-color: #bbb;
   cursor: not-allowed;
-}
-
-.analyzer-section {
-  margin-top: 50px;
-  border-top: 1px solid #eee;
-  padding-top: 30px;
 }
 </style>

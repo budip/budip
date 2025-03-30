@@ -1,9 +1,9 @@
 <template>
     <div class="image-analyzer-container">
-      <header class="page-header">
-        <h2 class="page-title">🖼️ Image Analyzer</h2>
-      </header>
-  
+      <p class="analyzer-intro">
+        <strong>Upload a photo</strong> and let AI describe what it sees.
+      </p>
+
       <!-- Upload + Button -->
       <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 mb-6">
         <input type="file" accept="image/*" @change="onFileChange" class="file-input" />
@@ -106,9 +106,16 @@
   
   <style scoped>
   .image-analyzer-container {
-    padding-top: 30px;
+    padding-top: 0px;
   }
   
+  .analyzer-intro {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
   .file-input {
     padding: 6px 8px;
     font-size: 16px;
