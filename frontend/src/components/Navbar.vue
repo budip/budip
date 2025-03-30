@@ -7,6 +7,7 @@
         <li class="nav-item"><router-link class="nav-link" to="/blog">Blog</router-link></li>
         <li class="nav-item"><router-link class="nav-link" to="/space">Space</router-link></li>
         <li class="nav-item"><router-link class="nav-link" to="/ai">AI Tools</router-link></li>
+        <li class="nav-item"><router-link class="nav-link" to="/console">Console</router-link></li>
         <li class="nav-item"><router-link class="nav-link" to="/about">About</router-link></li>
       </ul>
     </div>

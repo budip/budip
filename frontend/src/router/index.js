@@ -7,7 +7,8 @@ import CreateBlog from '../components/CreateBlog.vue'
 import EditBlog from '../components/EditBlog.vue'
 import About from '../components/About.vue'
 import Space from '../components/Space.vue'
-import AIPage from '../components/AIPage.vue'   // <-- new import
+import AIPage from '../components/AIPage.vue'
+import Console from '../components/Console.vue'
 import ExploreTopics from '../components/ExploreTopics.vue'
 
 const routes = [
@@ -21,6 +22,7 @@ const routes = [
   { path: '/space', component: Space },
   { path: '/ai', name: 'AI Tools', component: AIPage },
   { path: '/explore', component: ExploreTopics },
+  { path: '/console', name: 'Console', component: Console },
 ]
 
 const router = createRouter({
