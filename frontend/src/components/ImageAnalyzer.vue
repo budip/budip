@@ -1,9 +1,15 @@
 <template>
     <div class="image-analyzer-container">
         <p class="analyzer-intro">
-            <strong>Upload a photo</strong> and let AI describe what it sees.<br />
-            Your image stays private, processed in memory only, never stored or shared. 
-            It’s sent anonymously to OpenAI and <strong>not</strong> used to train any models.
+            <strong>Upload a photo</strong> and let AI describe what it sees.<br /><br />
+
+            <strong>How it works:</strong><br />
+            1. Choose an image or photo from your device<br />
+            2. Click the <em>Analyze Image</em> button and wait a few seconds while the AI processes it<br /><br />
+
+            🔐 <strong>Privacy notice:</strong><br />
+            Your image is never stored or shared. It’s processed in memory only and sent anonymously to OpenAI.  
+            It is <strong>not</strong> used to train any models.
         </p>
 
       <!-- Upload + Button -->
@@ -120,7 +126,7 @@
   .analyzer-intro {
     font-size: 16px;
     color: #444;
-    margin-bottom: 16px;
+    margin-bottom: 40px;
     line-height: 1.6;
   }
 
