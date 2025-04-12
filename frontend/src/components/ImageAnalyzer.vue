@@ -49,6 +49,10 @@
             <p v-if="parsedResponse.alt_text" class="text-gray-600 text-sm">
                 <strong>Alt Text:</strong> {{ parsedResponse.alt_text }}
             </p>
+
+            <p v-if="parsedResponse.description" class="text-gray-600 text-sm">
+                <strong>Description:</strong> {{ parsedResponse.description }}
+            </p>
         </div>
       </div>
     </div>
@@ -88,10 +92,11 @@
         title: parsed.title || '',
         caption: parsed.caption || '',
         categories: parsed.categories || [],
-        alt_text: parsed.alt_text || ''
+        alt_text: parsed.alt_text || '',
+        description: parsed.description || '',
       }
     } catch (e) {
-      return { title: '', caption: '', categories: [] }
+      return { title: '', caption: '', categories: [],  alt_text: '', description: ''}
     }
   })
   

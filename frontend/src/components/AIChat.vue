@@ -1,15 +1,27 @@
 <template>
-  <section>
+  <section class="chat-wrapper">
     <!-- Chat Box -->
-    <div v-if="messages.length" ref="chatBoxRef" class="chat-box">
-      <div
-        v-for="(msg, index) in messages"
-        :key="index"
-        class="chat-message"
-        :class="msg.role"
-      >
-        <p class="chat-text">{{ msg.role === 'user' ? 'You' : 'AI' }}: {{ msg.content }}</p>
-      </div>
+    <div ref="chatBoxRef" class="chat-box">
+      <template v-if="messages.length">
+        <div
+          v-for="(msg, index) in messages"
+          :key="index"
+          class="chat-message"
+          :class="msg.role"
+        >
+          <div class="chat-text" v-if="msg.role === 'user'">
+            You: {{ msg.content }}
+          </div>
+          <div
+            class="chat-text"
+            v-else
+            v-html="DOMPurify.sanitize(marked(`AI: ${msg.content}`))"
+          ></div>
+        </div>
+      </template>
+      <template v-else>
+        <div class="chat-placeholder">Your conversation will appear here...</div>
+      </template>
     </div>
 
     <!-- Input Area -->
@@ -29,6 +41,8 @@
 
 <script setup>
 import { ref, nextTick } from 'vue'
+import { marked } from 'marked'
+import DOMPurify from 'dompurify'
 
 const prompt = ref('')
 const messages = ref([])
@@ -72,24 +86,42 @@ const sendPrompt = async () => {
 </script>
 
 <style scoped>
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: calc(70vh - 30px);
+}
+
+/* Chat area */
 .chat-box {
-  height: auto;
-  max-height: 35vh;
+  flex-grow: 1;
   overflow-y: auto;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 20px;
   padding: 12px;
+  margin-bottom: 12px;
   background-color: #fafafa;
   border: 1px solid #eee;
   border-radius: 6px;
 }
 
+/* Empty state */
+.chat-placeholder {
+  color: #999;
+  font-style: italic;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* Message bubbles */
 .chat-message {
   padding: 12px;
   border-radius: 8px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   font-size: 16px;
   line-height: 1.5;
   word-wrap: break-word;
@@ -112,6 +144,7 @@ const sendPrompt = async () => {
   color: #333;
 }
 
+/* Input */
 .input-area {
   display: flex;
   flex-direction: column;
