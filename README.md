@@ -43,6 +43,20 @@ An interactive AI chat assistant powered by OpenAI, built using:
 - Chat-style interface that allows prompt/response exchange
 - Seamless backend integration via fetch and CORS
 
+### 🖼️ AI Image Analyzer
+
+An AI-powered image analysis tool integrated into the assistant. Built with OpenAI’s vision model to help users understand their images safely and privately — no training or data storage involved.
+
+- **OpenAI Vision Model** – Uses one of the most advanced LLMs to analyze images
+- **Image Preprocessing** – Custom image reducer for efficient and fast analysis
+- **Custom Prompt & Agent** – Handles specific image-related tasks with tailored logic
+- **Outputs:**
+  - Image description
+  - Alternative text (alt text)
+  - Category classification
+  - Concise summary
+- **Coming Soon:** If the image contains a product or item, the system will detect it and suggest nearby places to purchase it — both new and second-hand
+
 <br>
 
 ## ⚙️ Technologies Used
