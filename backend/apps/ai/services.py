@@ -1,50 +1,50 @@
-import openai
-import traceback
+import json
 import logging
 import base64
-from django.conf import settings
 from PIL import Image
 from io import BytesIO
+import openai
+
+from django.conf import settings
+from .price_finder import fetch_prices_from_stores
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+# OpenAI API configuration
 openai.api_key = settings.OPENAI_API_KEY
 
 # Simple in-memory history
 user_histories = {}
 
-def get_openai_response_image_analyzer(uploaded_file):
+
+def analyze_uploaded_image(uploaded_file):
     try:
-        # 🖼️ Resize to 1024px width if needed
+        # 🖼️ Resize and prepare image
         image = Image.open(uploaded_file)
         if image.width > 1024:
             ratio = 1024 / float(image.width)
             new_height = int(image.height * ratio)
-            image = image.resize((1024, new_height), Image.LANCZOS)  # <-- Updated here
+            image = image.resize((1024, new_height), Image.LANCZOS)
 
-        # Convert to JPEG in memory
         buffer = BytesIO()
         image.save(buffer, format="JPEG", quality=85)
         buffer.seek(0)
 
-        # Encode to base64
         base64_image = base64.b64encode(buffer.read()).decode("utf-8")
         image_data_url = f"data:image/jpeg;base64,{base64_image}"
 
-        # Vision prompt
+        # 🔥 Vision prompt
         vision_prompt = (
             "Respond only with a raw JSON object containing the following fields:\n"
             "- 'title': a short, catchy title for the image.\n"
             "- 'caption': a concise one-line caption.\n"
             "- 'alt_text': a clear, descriptive alt text.\n"
-            "- 'categories': an array of 2–4 relevant keywords that describe the image "
-            "(e.g., ['Space', 'Astronomy', 'Galaxy']).\n"
-            "- 'description': 1 to 3 paragraphs that describe what the image is about. "
-            "This should be written in natural, engaging language as if describing it for a YouTube video description "
-            "or product listing on Shopify. Avoid markdown or formatting.\n"
-            "Respond in strict JSON format. Do not include markdown formatting or triple backticks."
+            "- 'categories': an array of 2–4 relevant keywords that describe the image.\n"
+            "- 'description': 1–3 paragraphs describing the image naturally.\n"
+            "- 'search_query': a string that could be used to find this item online for shopping.\n"
+            "Respond in strict JSON format."
         )
 
         messages = [
@@ -57,23 +57,46 @@ def get_openai_response_image_analyzer(uploaded_file):
             }
         ]
 
-        logger.debug(f"🧠 Sending image to OpenAI (resized to width ≤ 1024px)")
+        logger.debug(f"🧠 Sending to OpenAI Vision API")
         response = openai.chat.completions.create(
             model="gpt-4-turbo",
             messages=messages,
             temperature=0.7,
-            max_tokens=300
+            max_tokens=400
         )
 
-        reply = response.choices[0].message.content.strip()
-        logger.debug(f"✅ OpenAI Vision response:\n{reply}")
-        return reply
+        reply_text = response.choices[0].message.content.strip()
+        logger.debug(f"✅ OpenAI raw reply:\n{reply_text}")
+
+        parsed_reply = json.loads(reply_text)
+
+        search_query = parsed_reply.get("search_query")
+        categories = parsed_reply.get("categories", [])
+
+        # 🛒 Check if categories are buyable
+        buyable_keywords = {
+            "Electronics", "Appliances", "Furniture", "Clothing", "Tools",
+            "Sports", "Household", "Toys", "Home Decor", "Garden", "Office Supplies"
+        }
+
+        # Case insensitive matching
+        is_buyable = any(
+            category.lower() in (word.lower() for word in buyable_keywords)
+            for category in categories
+        )
+
+        if search_query and is_buyable:
+            logger.debug(f"🛒 Buyable item detected: {search_query}")
+            prices = fetch_prices_from_stores(search_query)
+            parsed_reply["prices"] = prices
+        else:
+            logger.info(f"🔍 Not a buyable item based on categories {categories}. Skipping price fetch.")
+
+        return parsed_reply
 
     except Exception as e:
-        logger.error(f"❌ Error in image analyzer: {str(e)}")
-        traceback.print_exc()
-        return "⚠️ Error analyzing the image."
-
+        logger.error(f"❌ Error analyzing uploaded image: {str(e)}")
+        raise e
 
 def get_openai_response(prompt, user_id=1):
     try:
