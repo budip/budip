@@ -83,10 +83,10 @@ An AI-powered image analysis tool integrated into the assistant. Built with Open
 
 This project uses **GitHub Actions** for continuous integration and deployment. Key steps in the pipeline include:
 
-- 🔍 Linting and code checks on every commit
-- ✅ Automated tests for backend and frontend
-- 🐳 Docker image builds for all services
-- 🚀 Deployment to AWS EC2 using SSH and Docker Compose
+- Linting and code checks on every commit
+- Automated tests for backend and frontend
+- Docker image builds for all services
+- Deployment to AWS EC2 using SSH and Docker Compose
 
 Every push to `main` triggers a clean end-to-end deployment, ensuring the site is always up to date with the latest code.
 
