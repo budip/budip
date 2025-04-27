@@ -1,6 +1,7 @@
 import json
 import logging
 import base64
+import traceback
 from PIL import Image
 from io import BytesIO
 import openai
@@ -44,7 +45,7 @@ def analyze_uploaded_image(uploaded_file):
             "- 'categories': an array of 2–4 relevant keywords that describe the image.\n"
             "- 'description': 1–3 paragraphs describing the image naturally.\n"
             "- 'search_query': a string that could be used to find this item online for shopping.\n"
-            "Respond in strict JSON format."
+            "Respond in strict JSON format without any markdown or triple backticks."
         )
 
         messages = [
@@ -67,6 +68,13 @@ def analyze_uploaded_image(uploaded_file):
 
         reply_text = response.choices[0].message.content.strip()
         logger.debug(f"✅ OpenAI raw reply:\n{reply_text}")
+
+        # 🧹 Clean unexpected triple backticks if present
+        if reply_text.startswith("```"):
+            reply_text = reply_text.lstrip("`").strip()
+            if reply_text.lower().startswith("json"):
+                reply_text = reply_text[4:].strip()
+            reply_text = reply_text.rstrip("`").strip()
 
         parsed_reply = json.loads(reply_text)
 
@@ -96,7 +104,9 @@ def analyze_uploaded_image(uploaded_file):
 
     except Exception as e:
         logger.error(f"❌ Error analyzing uploaded image: {str(e)}")
+        traceback.print_exc()
         raise e
+
 
 def get_openai_response(prompt, user_id=1):
     try:
