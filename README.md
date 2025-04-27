@@ -2,9 +2,16 @@
 
 **Welcome!**
 
-This is my personal full-stack website — a creative playground where I explore content creation, real-time interaction, AI integration, and space data. It brings together multiple custom-built apps into one seamless platform.
+This is my personal full-stack website — a creative playground where I explore content creation, real-time interaction, AI integration, and space data visualization.
 
-The project includes a blog, a NASA-themed space section, an OpenAI-powered chat assistant, and a clean frontend powered by Vue 3 and Vite. It's fully containerized with Docker, continuously deployed via GitHub Actions, and hosted on AWS EC2.
+The platform brings together multiple custom-built applications into a seamless experience, including:
+
+- A dynamic **blog**
+- A **NASA-themed space exploration section**
+- An **OpenAI-powered chat assistant**
+- An **advanced AI Image Analyzer** that can recognize uploaded images, describe them in natural language, and suggest real-world product pricing where applicable
+
+The backend is powered by **Django**, fully containerized with **Docker**, automatically deployed through **GitHub Actions**, and hosted on **AWS EC2** for scalability and reliability. The frontend is built with **Vue 3** and **Vite** for a fast and clean user experience.
 
 > <br>Not a generic starter template. This site reflects what I love to build: things that are useful, curious, and human-centered.<br><br>
 
@@ -55,7 +62,8 @@ An AI-powered image analysis tool integrated into the assistant. Built with Open
   - Alternative text (alt text)
   - Category classification
   - Concise summary
-- **Coming Soon:** If the image contains a product or item, the system will detect it and suggest nearby places to purchase it — both new and second-hand
+  - Product Detection and Price Suggestions:
+    If the uploaded image contains a recognizable product, the system automatically detects it, fetches real-time pricing from multiple stores, and suggests nearby purchasing options.
 
 <br>
 
