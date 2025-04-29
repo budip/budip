@@ -39,12 +39,11 @@
   </template>
   
   <script setup>
-  // No logic needed for this section yet
   </script>
   
   <style scoped>
     .intro-section {
-        background-color: #f8f9fa; /* or #f1f5f9, #edf2f7 */
+        background-color: #f8f9fa;
         padding: 20px 20px;
     }
 

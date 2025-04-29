@@ -11,7 +11,6 @@ def fetch_prices_from_stores(search_query):
     """
     logger.debug(f"🛒 Fetching prices for: {search_query}")
 
-    # ⚡ Simulated dummy price ranges (you can delete this later when using real APIs)
     simulated_prices = {
         "Amazon": round(random.uniform(50, 200), 2),
         "Walmart": round(random.uniform(50, 200), 2),

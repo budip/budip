@@ -106,7 +106,7 @@ async function submitImage() {
       headers: { 'Content-Type': 'multipart/form-data' },
     })
 
-    parsedResponse.value = response.data  // ✅ Save directly
+    parsedResponse.value = response.data
 
     console.log('✅ Backend response:', parsedResponse.value)
   } catch (error) {
@@ -119,7 +119,6 @@ async function submitImage() {
 </script>
 
 <style scoped>
-/* your same style, no need to change */
 .image-analyzer-container {
   padding-top: 0px;
 }

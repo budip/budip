@@ -14,4 +14,4 @@ def apod(request):
     response = requests.get(api_url, params=params)
     data = response.json()
 
-    return JsonResponse(data)  # Return pure JSON
+    return JsonResponse(data)

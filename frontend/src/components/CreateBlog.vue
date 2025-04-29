@@ -65,16 +65,13 @@ const cancelPost = () => {
 </script>
   
 <style scoped>
-/* 🔹 Consistent Layout with Blog, Edit, & About Pages */
 .create-blog-container {
     padding: 0 0;
-    /* background: #f8f9fa; */
 }
 
-/* 🔹 Matches About Page */
 .content-wrapper {
     max-width: 900px;
-    margin: 30px auto 40px; /* Adjust top margin */
+    margin: 30px auto 40px;
     text-align: left;
     background: white;
     padding: 30px;
@@ -82,7 +79,6 @@ const cancelPost = () => {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 🔹 Page Header */
 .page-header {
     display: flex;
     align-items: center;
@@ -97,7 +93,6 @@ const cancelPost = () => {
     font-weight: bold;
 }
 
-/* 🔹 Form Styling */
 .form-group {
     margin-bottom: 15px;
 }
@@ -121,7 +116,6 @@ textarea {
     height: 400px;
 }
 
-/* 🔹 Button Container */
 .button-container {
     display: flex;
     justify-content: center;
@@ -129,7 +123,6 @@ textarea {
     margin-top: 20px;
 }
 
-/* 🔹 Success Message */
 .success-message {
     margin-top: 15px;
     padding: 10px;
@@ -139,7 +132,6 @@ textarea {
     text-align: center;
 }
 
-/* 🔹 Buttons */
 .action-btn {
     padding: 10px 15px;
     font-size: 14px;
@@ -150,7 +142,6 @@ textarea {
     transition: background 0.3s ease-in-out;
 }
 
-/* Publish Button */
 .publish-btn {
     background: #ccd9e8;
     color: #4e4d4d;
@@ -162,7 +153,6 @@ textarea {
     background: #5598e0;
 }
 
-/* Cancel Button */
 .cancel-btn {
     background: #dad8d8;
     color: #4e4d4d;
@@ -171,6 +161,6 @@ textarea {
 }
 
 .cancel-btn:hover {
-    background: #ea8591; /* Soft red on hover */
+    background: #ea8591;
 }
 </style>

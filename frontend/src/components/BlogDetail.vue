@@ -62,16 +62,13 @@ const renderMarkdown = (content) => {
 </script>
   
 <style scoped>
-/* 🔹 Consistent Layout with About & Blog Pages */
 .blog-detail-container {
     padding: 0 0;
-    /* background: #f8f9fa; */
 }
 
-/* 🔹 Matches About Page */
 .content-wrapper {
     max-width: 900px;
-    margin: 30px auto 40px; /* Top margin adjustment */
+    margin: 30px auto 40px;
     text-align: left;
     background: white;
     padding: 30px;
@@ -79,7 +76,6 @@ const renderMarkdown = (content) => {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 🔹 Page Header */
 .page-header {
     display: flex;
     align-items: center;
@@ -94,14 +90,12 @@ const renderMarkdown = (content) => {
     font-weight: bold;
 }
 
-/* 🔹 Loading/Error Messages */
 .loading, .error {
     font-size: 18px;
     color: #555;
     text-align: center;
 }
 
-/* 🔹 Blog Post Title */
 .post-title {
     font-size: 24px;
     color: #222;
@@ -109,14 +103,12 @@ const renderMarkdown = (content) => {
     margin-bottom: 10px;
 }
 
-/* 🔹 Date Formatting */
 .date {
     font-size: 14px;
     color: #888;
     font-style: italic;
 }
 
-/* 🔹 Content Styling */
 .content {
     font-size: 16px;
     line-height: 1.6;
@@ -141,7 +133,6 @@ const renderMarkdown = (content) => {
     overflow-x: auto;
 }
 
-/* 🔹 Button Container */
 .button-container {
     display: flex;
     justify-content: center;
@@ -149,7 +140,6 @@ const renderMarkdown = (content) => {
     margin-top: 20px;
 }
 
-/* 🔹 Button Styles (Matches Blog Page) */
 .action-btn {
     padding: 10px 15px;
     font-size: 14px;
@@ -160,7 +150,6 @@ const renderMarkdown = (content) => {
     transition: background 0.3s ease-in-out;
 }
 
-/* Edit Button */
 .edit-btn {
     background: #ead9a5;
     color: #4e4d4d;

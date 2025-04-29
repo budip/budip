@@ -1,6 +1,6 @@
 <template>
     <header class="hero">
-      <div class="overlay"></div> <!-- Dimming effect only on background -->
+      <div class="overlay"></div>
       <div class="hero-content">
         <h1>Welcome to my website</h1>
         <p>Exploring the future through technology, creativity, and discovery.</p>
@@ -27,7 +27,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   }
   
-  /* Background Image - Fixed Zoom & Position */
   .hero::before {
     content: "";
     position: absolute;
@@ -42,7 +41,6 @@
     z-index: -1;
   }
   
-  /* Overlay to Dim Background */
   .overlay {
     position: absolute;
     top: 0;
@@ -55,7 +53,6 @@
     z-index: -1;
   }
   
-  /* Welcome Panel */
   .hero-content {
     position: relative;
     background: rgba(213, 206, 206, 0.3);
@@ -68,7 +65,6 @@
     max-width: 600px;
   }
   
-  /* Buttons Styling */
   .buttons {
     margin-top: 15px;
     display: flex;

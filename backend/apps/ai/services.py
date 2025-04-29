@@ -22,7 +22,7 @@ user_histories = {}
 
 def analyze_uploaded_image(uploaded_file):
     try:
-        # 🖼️ Resize and prepare image
+        # Resize and prepare image
         image = Image.open(uploaded_file)
         if image.width > 1024:
             ratio = 1024 / float(image.width)
@@ -36,7 +36,7 @@ def analyze_uploaded_image(uploaded_file):
         base64_image = base64.b64encode(buffer.read()).decode("utf-8")
         image_data_url = f"data:image/jpeg;base64,{base64_image}"
 
-        # 🔥 Vision prompt
+        # Vision prompt
         vision_prompt = (
             "Respond only with a raw JSON object containing the following fields:\n"
             "- 'title': a short, catchy title for the image.\n"
@@ -58,7 +58,7 @@ def analyze_uploaded_image(uploaded_file):
             }
         ]
 
-        logger.debug(f"🧠 Sending to OpenAI Vision API")
+        logger.debug(f"Sending to OpenAI Vision API")
         response = openai.chat.completions.create(
             model="gpt-4-turbo",
             messages=messages,
@@ -67,7 +67,7 @@ def analyze_uploaded_image(uploaded_file):
         )
 
         reply_text = response.choices[0].message.content.strip()
-        logger.debug(f"✅ OpenAI raw reply:\n{reply_text}")
+        logger.debug(f"OpenAI raw reply:\n{reply_text}")
 
         # 🧹 Clean unexpected triple backticks if present
         if reply_text.startswith("```"):
@@ -98,7 +98,7 @@ def analyze_uploaded_image(uploaded_file):
             prices = fetch_prices_from_stores(search_query)
             parsed_reply["prices"] = prices
         else:
-            logger.info(f"🔍 Not a buyable item based on categories {categories}. Skipping price fetch.")
+            logger.info(f"Not a buyable item based on categories {categories}. Skipping price fetch.")
 
         return parsed_reply
 

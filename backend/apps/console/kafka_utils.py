@@ -7,7 +7,7 @@ def get_kafka_status():
         'metrics': {
             'broker': 'kafka:9092',
             'topic_count': 0,
-            'partition_count': 10  # example or get real value
+            'partition_count': 10
         }
     }
 
@@ -23,7 +23,7 @@ def get_kafka_status():
     #         'metrics': {
     #             'broker': 'kafka:9092',
     #             'topic_count': len(topics),
-    #             'partition_count': 10  # example or get real value
+    #             'partition_count': 
     #         }
     #     }
     # except Exception as e:

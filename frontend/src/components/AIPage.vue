@@ -30,7 +30,6 @@
   </script>
   
   <style scoped>
-  /* Copied and matched from About.vue */
   .ai-container {
     padding: 20px 20px;
     text-align: center;

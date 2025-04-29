@@ -37,7 +37,6 @@ onMounted(async () => {
   }
 });
 
-// Format Date
 const formatDate = (dateString) => {
   const options = { 
       year: 'numeric', 
@@ -49,16 +48,13 @@ const formatDate = (dateString) => {
 </script>
 
 <style scoped>
-/* 🔹 Consistent Layout with Blog & About Pages */
 .nasa-container {
   padding: 0 0;
-  /* background: #f8f9fa; */
 }
 
-/* 🔹 Matches Blog & About Page */
 .content-wrapper {
   max-width: 900px;
-  margin: 30px auto 40px; /* Adjust top margin */
+  margin: 30px auto 40px; 
   text-align: center;
   background: white;
   padding: 30px;
@@ -66,7 +62,6 @@ const formatDate = (dateString) => {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 🔹 Page Header */
 .page-header {
   display: flex;
   align-items: center;
@@ -83,14 +78,12 @@ const formatDate = (dateString) => {
   width: 100%;
 }
 
-/* 🔹 APOD Content */
 .apod-content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* 🔹 APOD Title */
 .apod-title {
   font-size: 22px;
   font-weight: bold;
@@ -99,7 +92,6 @@ const formatDate = (dateString) => {
   text-align: center;
 }
 
-/* 🔹 Date Formatting */
 .apod-date {
   font-size: 16px;
   color: #666;
@@ -107,7 +99,6 @@ const formatDate = (dateString) => {
   margin-bottom: 20px;
 }
 
-/* 🔹 Media Container */
 .media-container {
   width: 100%;
   display: flex;
@@ -115,7 +106,6 @@ const formatDate = (dateString) => {
   margin-bottom: 20px;
 }
 
-/* 🔹 APOD Image */
 .apod-image {
   max-width: 50%;
   height: auto;
@@ -129,7 +119,6 @@ const formatDate = (dateString) => {
   transform: scale(1.02);
 }
 
-/* 🔹 APOD Video */
 .apod-video {
   width: 100%;
   max-width: 700px;
@@ -138,7 +127,6 @@ const formatDate = (dateString) => {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* 🔹 Explanation */
 .apod-explanation {
   font-size: 16px;
   color: #444;
@@ -148,7 +136,6 @@ const formatDate = (dateString) => {
   max-width: 800px;
 }
 
-/* 🔹 Loading Message */
 .loading {
   font-size: 18px;
   font-weight: bold;
