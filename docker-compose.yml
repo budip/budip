@@ -17,9 +17,9 @@ services:
   frontend:
     build:
       context: ./frontend
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+    # volumes:
+    #   - ./frontend:/app:delegated  # more stable file sharing
+    #   # - /app/node_modules          # prevent host from overwriting container's node_modules
     ports:
       - "5173:5173"
     environment:

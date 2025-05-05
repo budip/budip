@@ -1,21 +1,17 @@
-# Use official Node.js image
 FROM node:18
 
-# Set working directory
 WORKDIR /app
 
-# Copy package.json and lockfile
+# Print what's being copied
 COPY package*.json ./
 COPY .env .env
 
-# Install dependencies
-RUN npm install
+RUN echo "📦 Installing dependencies..." \
+    && npm install \
+    && echo "✅ Done installing dependencies."
 
-# Copy the rest of the app
 COPY . .
 
-# Expose Vite dev server port
 EXPOSE 5173
 
-# Run Vite dev server
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["npm", "run", "dev"]
